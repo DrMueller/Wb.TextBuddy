@@ -3,5 +3,6 @@
     public interface IListFunctionsService
     {
         string TransformToCommaSeparatedList(string value);
+        string SortList(string value);
     }
 }

@@ -18,7 +18,17 @@ namespace Mmu.Wb.TextBuddy.Areas.Lists.Views
 
         public CommandsViewData Commands { get; private set; }
 
-        private ViewModelCommand ToStringCommand =>
+        private ViewModelCommand SortListCommand =>
+            new ViewModelCommand(
+                "Sort",
+                new RelayCommand(
+                    () =>
+                    {
+                        _context.Text = _listFunctionsService.SortList(_context.Text);
+                    },
+                    () => !string.IsNullOrEmpty(_context.Text)));
+
+        private ViewModelCommand ToCommaSeparatedListCommand =>
             new ViewModelCommand(
                 "To , list",
                 new RelayCommand(
@@ -33,7 +43,8 @@ namespace Mmu.Wb.TextBuddy.Areas.Lists.Views
             _context = context;
 
             Commands = new CommandsViewData(
-                ToStringCommand
+                ToCommaSeparatedListCommand,
+                SortListCommand
             );
 
             return Task.CompletedTask;
