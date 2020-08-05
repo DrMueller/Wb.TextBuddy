@@ -38,13 +38,25 @@ namespace Mmu.Wb.TextBuddy.Areas.Lists.Views
                     },
                     () => !string.IsNullOrEmpty(_context.Text)));
 
+
+        private ViewModelCommand AnalyzePerformance =>
+            new ViewModelCommand(
+                "Analyze Performance",
+                new RelayCommand(
+                    () =>
+                    {
+                        _context.Text = _listFunctionsService.AnalyzePerformance(_context.Text);
+                    },
+                    () => !string.IsNullOrEmpty(_context.Text)));
+
         public Task InitializeAsync(ListFunctionsViewModel context)
         {
             _context = context;
 
             Commands = new CommandsViewData(
                 ToCommaSeparatedListCommand,
-                SortListCommand
+                SortListCommand,
+                AnalyzePerformance
             );
 
             return Task.CompletedTask;

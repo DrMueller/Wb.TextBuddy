@@ -2,7 +2,10 @@
 {
     public interface IListFunctionsService
     {
-        string TransformToCommaSeparatedList(string value);
+        string AnalyzePerformance(string value);
+
         string SortList(string value);
+
+        string TransformToCommaSeparatedList(string value);
     }
 }
