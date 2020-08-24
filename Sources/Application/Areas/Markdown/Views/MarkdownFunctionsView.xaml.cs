@@ -1,9 +1,8 @@
-﻿using System.Windows.Controls;
-using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Views.Interfaces;
+﻿using Mmu.Mlh.WpfCoreExtensions.Areas.MvvmShell.Views.Interfaces;
 
 namespace Mmu.Wb.TextBuddy.Areas.Markdown.Views
 {
-    public partial class MarkdownFunctionsView : UserControl, IViewMap<MarkdownFunctionsViewModel>
+    public partial class MarkdownFunctionsView : IViewMap<MarkdownFunctionsViewModel>
     {
         public MarkdownFunctionsView()
         {

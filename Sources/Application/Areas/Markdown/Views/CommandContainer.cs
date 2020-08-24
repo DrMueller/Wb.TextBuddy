@@ -24,6 +24,7 @@ namespace Mmu.Wb.TextBuddy.Areas.Markdown.Views
                 new RelayCommand(
                     () =>
                     {
+                        _context.Text = _markdownFunctionsService.CleanTable(_context.Text);
                     },
                     () => !string.IsNullOrEmpty(_context.Text)));
 
@@ -31,7 +32,7 @@ namespace Mmu.Wb.TextBuddy.Areas.Markdown.Views
         {
             _context = context;
 
-            Commands = new CommandsViewData();
+            Commands = new CommandsViewData(CleanTableCommand);
 
             return Task.CompletedTask;
         }
