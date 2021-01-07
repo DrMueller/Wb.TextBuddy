@@ -7,5 +7,7 @@
         string SortList(string value);
 
         string TransformToCommaSeparatedList(string value);
+
+        string TransformToCommaSeparatedAndApostrophedList(string value);
     }
 }

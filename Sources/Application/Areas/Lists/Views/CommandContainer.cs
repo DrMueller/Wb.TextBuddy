@@ -39,6 +39,17 @@ namespace Mmu.Wb.TextBuddy.Areas.Lists.Views
                     () => !string.IsNullOrEmpty(_context.Text)));
 
 
+        private ViewModelCommand ToCommaSeparatedAndApostropheListCommand =>
+            new ViewModelCommand(
+                "To apo , list",
+                new RelayCommand(
+                    () =>
+                    {
+                        _context.Text = _listFunctionsService.TransformToCommaSeparatedAndApostrophedList(_context.Text);
+                    },
+                    () => !string.IsNullOrEmpty(_context.Text)));
+
+
         private ViewModelCommand AnalyzePerformance =>
             new ViewModelCommand(
                 "Analyze Performance",
@@ -55,6 +66,7 @@ namespace Mmu.Wb.TextBuddy.Areas.Lists.Views
 
             Commands = new CommandsViewData(
                 ToCommaSeparatedListCommand,
+                ToCommaSeparatedAndApostropheListCommand,
                 SortListCommand,
                 AnalyzePerformance
             );

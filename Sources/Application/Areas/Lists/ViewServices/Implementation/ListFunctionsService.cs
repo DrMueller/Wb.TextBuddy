@@ -66,5 +66,22 @@ namespace Mmu.Wb.TextBuddy.Areas.Lists.ViewServices.Implementation
 
             return sb.ToString();
         }
+
+        public string TransformToCommaSeparatedAndApostrophedList(string value)
+        {
+            var splitEntries = value.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+            var sb = new StringBuilder();
+
+            foreach (var splitEntry in splitEntries)
+            {
+                sb.Append("\"");
+                sb.Append(splitEntry);
+                sb.AppendLine("\", ");
+            }
+
+            sb.Remove(0, 2);
+
+            return sb.ToString();
+        }
     }
 }
