@@ -60,6 +60,17 @@ namespace Mmu.Wb.TextBuddy.Areas.Lists.Views
                     },
                     () => !string.IsNullOrEmpty(_context.Text)));
 
+        private ViewModelCommand FormatNpmDependencies =>
+           new ViewModelCommand(
+               "Format NPM",
+               new RelayCommand(
+                   () =>
+                   {
+                       _context.Text = _listFunctionsService.FormatNpmDpenendecies(_context.Text);
+                   },
+                   () => !string.IsNullOrEmpty(_context.Text)));
+
+
         public Task InitializeAsync(ListFunctionsViewModel context)
         {
             _context = context;
@@ -68,7 +79,8 @@ namespace Mmu.Wb.TextBuddy.Areas.Lists.Views
                 ToCommaSeparatedListCommand,
                 ToCommaSeparatedAndApostropheListCommand,
                 SortListCommand,
-                AnalyzePerformance
+                AnalyzePerformance,
+                FormatNpmDependencies
             );
 
             return Task.CompletedTask;

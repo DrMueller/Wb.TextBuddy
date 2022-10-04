@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Media;
 using JetBrains.Annotations;
 using Mmu.Mlh.LanguageExtensions.Areas.Collections;
 
@@ -80,6 +81,24 @@ namespace Mmu.Wb.TextBuddy.Areas.Lists.ViewServices.Implementation
             }
 
             sb.Remove(0, 2);
+
+            return sb.ToString();
+        }
+
+        public string FormatNpmDpenendecies(string value)
+        {
+            var template = "{{ name: '{0}', versionWithRange: '{1}' }},";
+            var lines = value.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+            var sb = new StringBuilder();
+
+            foreach (var line in lines)
+            {
+                var val = line.Split(" ");
+
+                var result = string.Format(template, val[0], val[1] + val[2]);
+                sb.AppendLine(result);
+
+            }
 
             return sb.ToString();
         }

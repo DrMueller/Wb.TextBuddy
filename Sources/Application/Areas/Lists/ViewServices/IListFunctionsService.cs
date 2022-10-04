@@ -9,5 +9,7 @@
         string TransformToCommaSeparatedList(string value);
 
         string TransformToCommaSeparatedAndApostrophedList(string value);
+
+        string FormatNpmDpenendecies(string value);
     }
 }
