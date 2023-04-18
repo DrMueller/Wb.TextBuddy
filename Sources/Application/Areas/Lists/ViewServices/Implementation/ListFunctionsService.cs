@@ -102,5 +102,27 @@ namespace Mmu.Wb.TextBuddy.Areas.Lists.ViewServices.Implementation
 
             return sb.ToString();
         }
+
+        public string FormatDbSets(string value)
+        {
+            var splitEntries = value.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+
+            var sb = new StringBuilder();
+
+            foreach (var entry in splitEntries)
+            {
+                var replace = entry.Replace("{ get; set; }", string.Empty);
+
+                var start = entry.IndexOf('>');
+
+
+                replace = replace.Substring(start + 1);
+                replace = replace.Trim();
+
+                sb.AppendLine($"Context.{replace}.RemoveRange(Context.{replace});");
+            }
+
+            return sb.ToString();
+        }
     }
 }

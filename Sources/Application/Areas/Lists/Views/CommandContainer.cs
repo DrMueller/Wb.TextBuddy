@@ -70,6 +70,16 @@ namespace Mmu.Wb.TextBuddy.Areas.Lists.Views
                    },
                    () => !string.IsNullOrEmpty(_context.Text)));
 
+        private ViewModelCommand FormDbSets =>
+            new ViewModelCommand(
+                "Format DbSets",
+                new RelayCommand(
+                    () =>
+                    {
+                        _context.Text = _listFunctionsService.FormatDbSets(_context.Text);
+                    },
+                    () => !string.IsNullOrEmpty(_context.Text)));
+
 
         public Task InitializeAsync(ListFunctionsViewModel context)
         {
@@ -80,7 +90,8 @@ namespace Mmu.Wb.TextBuddy.Areas.Lists.Views
                 ToCommaSeparatedAndApostropheListCommand,
                 SortListCommand,
                 AnalyzePerformance,
-                FormatNpmDependencies
+                FormatNpmDependencies,
+                FormDbSets
             );
 
             return Task.CompletedTask;

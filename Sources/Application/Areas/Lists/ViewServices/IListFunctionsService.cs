@@ -11,5 +11,7 @@
         string TransformToCommaSeparatedAndApostrophedList(string value);
 
         string FormatNpmDpenendecies(string value);
+
+        string FormatDbSets(string value);
     }
 }
